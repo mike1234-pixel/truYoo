@@ -1,48 +1,48 @@
-import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import React from "react";
+import { Carousel } from "react-bootstrap";
 
 class HomeCarousel extends React.Component {
-    render() {
-        return (
-            <Carousel id="carousel">
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src={require('./Images-and-videos/pic6.png')}
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      <h3></h3>
-      <p></p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src={require('./Images-and-videos/pic7.png')}
-      alt="Third slide"
-    />
+  render() {
+    return (
+      <Carousel id="carousel">
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={require("./Images-and-videos/pic6.png")}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3></h3>
+            <p></p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={require("./Images-and-videos/pic7.png")}
+            alt="Third slide"
+          />
 
-    <Carousel.Caption>
-      <h3></h3>
-      <p></p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src={require('./Images-and-videos/pic8.png')}
-      alt="Third slide"
-    />
+          <Carousel.Caption>
+            <h3></h3>
+            <p></p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={require("./Images-and-videos/pic8.png")}
+            alt="Third slide"
+          />
 
-    <Carousel.Caption>
-      <h3></h3>
-      <p></p>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>
-        )
-    }
+          <Carousel.Caption>
+            <h3></h3>
+            <p></p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    );
+  }
 }
 
-export default HomeCarousel
+export default HomeCarousel;
