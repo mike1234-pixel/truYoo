@@ -11,9 +11,9 @@ class RetailerLogin extends React.Component {
     this.state = {
       nameValue: "",
       emailValue: "",
+      phoneValue: "",
       passwordValueOne: "",
       passwordValueTwo: "",
-      phoneValue: "",
       cityValue: "",
       stateValue: "",
       zipValue: "",
@@ -22,10 +22,20 @@ class RetailerLogin extends React.Component {
       textAreaThreeValue: "",
       textAreaFourValue: "",
       checkBoxChecked: false,
-      /*Error Messages */
+      /* Validation Errors */
       nameError: "",
       emailError: "",
-      phoneError: ""
+      phoneError: "",
+      passwordOneError: "",
+      passwordTwoError: "",
+      cityError: "",
+      stateError: "",
+      zipError: "",
+      textAreaOneError: "",
+      textAreaTwoError: "",
+      textAreaThreeError: "",
+      textAreaFourError: "",
+      checkBoxError: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,42 +56,276 @@ class RetailerLogin extends React.Component {
     console.log(this.state.checkBoxChecked);
   }
 
-  validate = () => {
-    let nameError = "";
-    let emailError = "";
-    let phoneError = "";
-    if (!this.state.emailValue.includes("@")) {
-      emailError = "Invalid email.";
-    }
-    if (emailError) {
-      this.setState({
-        emailError
-      });
-      return false;
-    }
-    return true;
-  };
+  /* handleSubmit RUNS ALL VALIDATION FUNCTIONS IN REVERSE ORDER*/
 
   handleSubmit(event) {
     event.preventDefault();
-    const isValid = this.validate();
-    if (isValid) {
-      console.log(this.state.emailError);
+
+    this.validateCheckBox();
+    this.validateTextAreaFour();
+    this.validateTextAreaThree();
+    this.validateTextAreaTwo();
+    this.validateTextAreaOne();
+    this.validateZip();
+    this.validateState();
+    this.validateCity();
+    this.validatePasswordTwo();
+    this.validatePasswordOne();
+    this.validatePhone();
+    this.validateEmail();
+    this.validateName();
+
+    this.submitForm();
+  }
+
+  /* VALIDATION FUNCTIONS - UPDATE ERROR STATES */
+
+  validateName() {
+    let name = this.state.nameValue;
+    if (name == "") {
+      this.setState({
+        nameError: "Please enter a valid name."
+      });
+    } else if (name != "") {
+      this.setState({
+        nameError: ""
+      });
     }
   }
-  /*
-  handleChange(event) {
-    if (event.target.type != "checkbox") {
+
+  /* If name is blank, show error message. Else if name is not blank, remove error message. */
+  /* works */
+
+  validateEmail() {
+    let email = this.state.emailValue;
+    if (!email.includes("@") || email == "") {
       this.setState({
-        [event.target.name]: event.target.value
+        emailError: "Please enter a valid email."
       });
-    } else {
+    } else if (email != "" && email.includes("@")) {
       this.setState({
-        [event.target.name]: !event.target.value
+        emailError: ""
       });
     }
-    console.log(event.target.value);
-  } */
+  }
+
+  /* if email does not include '@' or email is blank, show error message. Else if email is not blank and email includes '@', remove error message */
+  /* works */
+
+  validatePhone() {
+    let phoneNumber = this.state.phoneValue;
+    let regex = /^([0-9]{11})$/;
+    if (
+      phoneNumber == null ||
+      phoneNumber == "" ||
+      regex.test(phoneNumber) == false
+    ) {
+      this.setState({
+        phoneError: "Please enter a valid phone number."
+      });
+    } else if (regex.test(phoneNumber) == true) {
+      this.setState({
+        phoneError: ""
+      });
+    }
+  }
+
+  /* Checks phone number is 11 chars and all chars are numeric, if not true display error message, else if true remove error message */
+  /* works */
+
+  validatePasswordOne() {
+    let passwordOne = this.state.passwordValueOne;
+    let regex = /(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[0-9])/; /* CHANGE THIS REGEX TO MAKE IT TEST WHAT YOU WANT TO TEST FOR*/
+    if (regex.test(passwordOne) == false) {
+      this.setState({
+        passwordOneError:
+          "Password must be minimum 8 characters and include one uppercase letter, one number and one special character."
+      });
+    } else if (regex.test(passwordOne) == true) {
+      this.setState({
+        passwordOneError: ""
+      });
+    }
+  }
+
+  /* Password must include one special character, one uppercase character and one numeric character */
+  /* if input does not include the above, show error message. Else if input does include the above, remove error message*/
+  /* works */
+
+  validatePasswordTwo() {
+    let passwordOne = this.state.passwordValueOne;
+    let passwordTwo = this.state.passwordValueTwo;
+    if (passwordTwo !== passwordOne) {
+      this.setState({
+        passwordTwoError: "Your passwords don't match."
+      });
+    } else if (passwordTwo == null || passwordTwo == "") {
+      this.setState({
+        passwordTwoError: "Field is empty."
+      });
+    } else if (
+      passwordTwo != null ||
+      (passwordTwo != "" && passwordTwo == passwordOne)
+    ) {
+      this.setState({
+        passwordTwoError: ""
+      });
+    }
+  }
+
+  /* If passwords in input fields one and two are not the same, display error message passwords don't match */
+  /* else if password field is empty, display error message field is empty */
+  /* else if field is not blank and password one and password two are the same, remove error message */
+  /* works */
+
+  validateCity() {
+    let city = this.state.cityValue;
+    if (city == "") {
+      this.setState({
+        cityError: "Please enter a city."
+      });
+    } else if (city != "") {
+      this.setState({
+        cityError: ""
+      });
+    }
+  }
+
+  /* if city field is empty, display error message. If field is not empty, remove error message */
+  /* works */
+
+  validateState() {
+    let state = this.state.stateValue;
+    if (state == "" || state == "SL") {
+      this.setState({
+        stateError: "Please select a state."
+      });
+    } else if (state != "SL") {
+      this.setState({
+        stateError: ""
+      });
+    }
+  }
+
+  /* if state field is blank or select state, display error message, else if state is not select state, remove error message */
+  /* works */
+
+  validateZip() {
+    let zip = this.state.zipValue;
+    let regex = /^([0-9]{5}|[0-9]{5}-[0-9]{4})$/;
+    if (zip == null || zip == "" || regex.test(zip) == false) {
+      this.setState({
+        zipError: "Please enter a valid zip code."
+      });
+    } else if (regex.test(zip) == true) {
+      this.setState({
+        zipError: ""
+      });
+    }
+  }
+
+  /* if zip is not 5 numbers or 5 numbers-4 numbers, display error message, if zip input is 5 numbers or 5 numbers-4 numbers, remove error message */
+  /* works */
+
+  validateTextAreaOne() {
+    let textAreaOne = this.state.textAreaOneValue;
+    if (textAreaOne == "" || textAreaOne.length < 30) {
+      this.setState({
+        textAreaOneError: "Field must contain over 30 characters."
+      });
+    } else if (textAreaOne.length > 30) {
+      this.setState({
+        textAreaOneError: ""
+      });
+    }
+  }
+
+  /* works */
+
+  validateTextAreaTwo() {
+    let textAreaTwo = this.state.textAreaTwoValue;
+    if (textAreaTwo == "" || textAreaTwo.length < 30) {
+      this.setState({
+        textAreaTwoError: "Field must contain over 30 characters."
+      });
+    } else if (textAreaTwo.length > 30) {
+      this.setState({
+        textAreaTwoError: ""
+      });
+    }
+  }
+
+  /* works */
+
+  validateTextAreaThree() {
+    let textAreaThree = this.state.textAreaThreeValue;
+    if (textAreaThree == "" || textAreaThree.length < 30) {
+      this.setState({
+        textAreaThreeError: "Field must contain over 30 characters."
+      });
+    } else if (textAreaThree.length > 30) {
+      this.setState({
+        textAreaThreeError: ""
+      });
+    }
+  }
+
+  /* works */
+
+  validateTextAreaFour() {
+    let textAreaFour = this.state.textAreaFourValue;
+    if (textAreaFour == "" || textAreaFour.length < 30) {
+      this.setState({
+        textAreaFourError: "Field must contain over 30 characters."
+      });
+    } else if (textAreaFour.length > 30) {
+      this.setState({
+        textAreaFourError: ""
+      });
+    }
+  }
+
+  /* works */
+
+  /* if input in text areas one through four is less than 30 characters, display error message. If over 30 characters, remove error message  */
+
+  validateCheckBox() {
+    let checked = this.state.checkBoxChecked;
+    if (checked == false) {
+      this.setState({
+        checkBoxError: "Please agree to the terms and conditions."
+      });
+    } else if (checked == true) {
+      this.setState({
+        checkBoxError: ""
+      });
+    }
+  }
+
+  /* if box is not checked, display error message, else if box is checked, remove error message */
+  /* works */
+
+  submitForm() {
+    if (
+      this.state.nameError == "" &&
+      this.state.emailError == "" &&
+      this.state.phoneError == "" &&
+      this.state.passwordOneError == "" &&
+      this.state.passwordTwoError == "" &&
+      this.state.cityError == "" &&
+      this.state.stateError == "" &&
+      this.state.zipError == "" &&
+      this.state.textAreaOneError == "" &&
+      this.state.textAreaTwoError == "" &&
+      this.state.textAreaThreeError == "" &&
+      this.state.textAreaFourError == "" &&
+      this.state.checkBoxError == ""
+    ) {
+      /*RELOAD PAGE IF THESE CONDITIONS ARE MET. */
+    }
+  }
+
+  /* if there are no error messages, reload window. */
 
   render() {
     let companyName = "truYoo";
@@ -139,13 +383,15 @@ class RetailerLogin extends React.Component {
               <Form.Label>Full Name</Form.Label>
               <Form.Control
                 type="name"
-                placeholder="Enter full name"
                 name="nameValue"
+                placeholder="Enter full name"
                 /* for an input to be controlled, its value must correspond to that of a state variable */
                 value={this.state.nameValue}
                 onChange={this.handleChange}
               />
-              <div>{this.state.nameError}</div>
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.nameError}
+              </Form.Text>
             </Form.Group>
 
             <Form.Group>
@@ -160,19 +406,22 @@ class RetailerLogin extends React.Component {
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
-              <div>{this.state.emailError}</div>
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.emailError}
+              </Form.Text>
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Phone Number</Form.Label>
               <Form.Control
-                type="number"
                 placeholder="Enter Phone Number"
                 name="phoneValue"
                 value={this.state.phoneValue}
                 onChange={this.handleChange}
               />
-              <div>{this.state.phoneError}</div>
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.phoneError}
+              </Form.Text>
             </Form.Group>
 
             <Form.Group>
@@ -184,6 +433,9 @@ class RetailerLogin extends React.Component {
                 value={this.state.passwordValueOne}
                 onChange={this.handleChange}
               />
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.passwordOneError}
+              </Form.Text>
             </Form.Group>
 
             <Form.Group>
@@ -195,6 +447,9 @@ class RetailerLogin extends React.Component {
                 value={this.state.passwordValueTwo}
                 onChange={this.handleChange}
               />
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.passwordTwoError}
+              </Form.Text>
             </Form.Group>
 
             <Form.Row>
@@ -205,6 +460,9 @@ class RetailerLogin extends React.Component {
                   value={this.state.cityValue}
                   onChange={this.handleChange}
                 />
+                <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                  {this.state.cityError}
+                </Form.Text>
               </Form.Group>
 
               <Form.Group as={Col}>
@@ -215,6 +473,7 @@ class RetailerLogin extends React.Component {
                   value={this.state.stateValue}
                   onChange={this.handleChange}
                 >
+                  <option value="SL">Select State</option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
                   <option value="AZ">Arizona</option>
@@ -267,6 +526,9 @@ class RetailerLogin extends React.Component {
                   <option value="WI">Wisconsin</option>
                   <option value="WY">Wyoming</option>
                 </Form.Control>
+                <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                  {this.state.stateError}
+                </Form.Text>
               </Form.Group>
 
               <Form.Group as={Col}>
@@ -276,6 +538,9 @@ class RetailerLogin extends React.Component {
                   value={this.state.zipValue}
                   onChange={this.handleChange}
                 />
+                <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                  {this.state.zipError}
+                </Form.Text>
               </Form.Group>
             </Form.Row>
 
@@ -289,6 +554,9 @@ class RetailerLogin extends React.Component {
                 value={this.state.textAreaOneValue}
                 onChange={this.handleChange}
               />
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.textAreaOneError}
+              </Form.Text>
             </Form.Group>
 
             <Form.Group>
@@ -301,6 +569,9 @@ class RetailerLogin extends React.Component {
                 value={this.state.textAreaTwoValue}
                 onChange={this.handleChange}
               />
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.textAreaTwoError}
+              </Form.Text>
             </Form.Group>
 
             <Form.Group>
@@ -315,6 +586,9 @@ class RetailerLogin extends React.Component {
                 value={this.state.textAreaThreeValue}
                 onChange={this.handleChange}
               />
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.textAreaThreeError}
+              </Form.Text>
             </Form.Group>
 
             <Form.Group>
@@ -329,6 +603,9 @@ class RetailerLogin extends React.Component {
                 value={this.state.textAreaFourValue}
                 onChange={this.handleChange}
               />
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.textAreaFourError}
+              </Form.Text>
             </Form.Group>
 
             <Form.Group id="formGridCheckbox">
@@ -339,13 +616,12 @@ class RetailerLogin extends React.Component {
                 checked={this.state.checkBoxChecked}
                 onChange={this.handleChange}
               />
+              <Form.Text style={{ color: "red", fontSize: "20px" }}>
+                {this.state.checkBoxError}
+              </Form.Text>
             </Form.Group>
 
-            <Button
-              variant="primary"
-              type="submit"
-              onSubmit={this.handleSubmit}
-            >
+            <Button variant="primary" type="button" onClick={this.handleSubmit}>
               Sign Up.
             </Button>
           </Form>
