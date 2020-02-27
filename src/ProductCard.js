@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import pic15 from "./Images-and-videos/pic15.png";
 import pic16 from "./Images-and-videos/pic16.png";
 import pic21 from "./Images-and-videos/pic21.jpg";
@@ -15,7 +16,9 @@ function ProductCard(props) {
       <img src={imageArr[props.id]} />
       <h2>{props.name}</h2>
       <p>{props.description}</p>
-      <Button variant="primary">Go somewhere</Button>
+      <Link to="/HowToShopTruYoo">
+        <Button variant="primary">Shop truYoo</Button>
+      </Link>
     </div>
   );
 }

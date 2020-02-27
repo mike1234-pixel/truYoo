@@ -2,7 +2,6 @@ import React from "react";
 
 import Home from "./Home.js";
 import AboutTruYoo from "./AboutTruYoo.js";
-import ShopTruYoo from "./ShopTruYoo.js";
 import YourTruYooBusiness from "./YourTruYooBusiness.js";
 import JoinTruYoo from "./JoinTruYoo.js";
 import RetailerLogin from "./RetailerLogin.js";
@@ -27,7 +26,6 @@ class App extends React.Component {
         <Switch>
           <Route path="/Home" component={Home} />
           <Route path="/AboutTruYoo" component={AboutTruYoo} />
-          <Route path="/ShopTruYoo" component={ShopTruYoo} />
           <Route path="/YourTruYooBusiness" component={YourTruYooBusiness} />
           <Route path="/JoinTruYoo" component={JoinTruYoo} />
           <Route path="/RetailerLogin" component={RetailerLogin} />

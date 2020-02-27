@@ -432,6 +432,13 @@ p.videoText {
   filter: drop-shadow(5px 5px 5px #1c0a57);
 }
 
+.being-your-own-boss-pics {
+  border-radius: 50%;
+  filter: drop-shadow(5px 5px 5px #cc66bd);
+  width: 200px;
+  height: 200px;
+}
+
 @media (max-width: 1500px) {
   .navLink {
     list-style: none;

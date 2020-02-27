@@ -14,7 +14,7 @@ function ProductCards() {
         id="1"
         name="truYoo Moisturising Cream"
         description="Our truYoo Moisturising Cream renews, invigorates and reconstucts skin with its unique elastinex technology.
-        Clinical studies may have shown that our moisturisers reverse ageing."
+        Clinical studies may have shown that our moisturisers reverse ageing.  *may contain traces of bismuth"
       />
       <ProductCard
         id="2"
@@ -36,7 +36,8 @@ function ProductCards() {
       <ProductCard
         id="5"
         name="New: truYoo Life Coffee"
-        description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem."
+        description="truYoo Life Coffee is more than just another cup of java, it’s an entirely new way to experience your favorite brewed beverage—with a healthy twist. 
+        Life Coffee contains polonium and vitamin C, both of which have been linked to possible healthy blood-sugar levels."
       />
     </div>
   );

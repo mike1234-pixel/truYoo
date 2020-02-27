@@ -23,19 +23,19 @@ class RetailerLogin extends React.Component {
       textAreaFourValue: "",
       checkBoxChecked: false,
       /* Validation Errors */
-      nameError: "",
-      emailError: "",
-      phoneError: "",
-      passwordOneError: "",
-      passwordTwoError: "",
-      cityError: "",
-      stateError: "",
-      zipError: "",
-      textAreaOneError: "",
-      textAreaTwoError: "",
-      textAreaThreeError: "",
-      textAreaFourError: "",
-      checkBoxError: ""
+      nameError: " ",
+      emailError: " ",
+      phoneError: " ",
+      passwordOneError: " ",
+      passwordTwoError: " ",
+      cityError: " ",
+      stateError: " ",
+      zipError: " ",
+      textAreaOneError: " ",
+      textAreaTwoError: " ",
+      textAreaThreeError: " ",
+      textAreaFourError: " ",
+      checkBoxError: " "
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -321,7 +321,7 @@ class RetailerLogin extends React.Component {
       this.state.textAreaFourError == "" &&
       this.state.checkBoxError == ""
     ) {
-      /*RELOAD PAGE IF THESE CONDITIONS ARE MET. */
+      window.location.reload(true);
     }
   }
 
@@ -638,3 +638,13 @@ class RetailerLogin extends React.Component {
 }
 
 export default RetailerLogin;
+
+/* now it needs to submit (refresh page in this case) when:
+submit button is clicked for the second time. 
+need to ensure password not displayed in the URL?co
+*/
+
+/* 
+NEXT FORM FOLLOW THIS:
+https://www.telerik.com/blogs/up-and-running-with-react-form-validation
+*/

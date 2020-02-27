@@ -7,37 +7,9 @@ import { Button, Row, Col, Container } from "react-bootstrap";
 class RecruitingYourDownline extends React.Component {
   constructor() {
     super();
-    this.state = {
-      removeMargin: false
-    };
-    this.handleScroll = this.handleScroll.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
-
-  handleScroll(event) {
-    let scrollTop = event.srcElement.body.scrollTop,
-      itemTranslate = Math.min(0, scrollTop / 3 - 60);
-
-    this.setState(state => ({
-      removeMargin: true
-    }));
-    console.log(this.state.removeMargin);
   }
 
   render() {
-    const textClass = ["who-are-truyoo-text"];
-
-    if (this.state.removeMargin) {
-      textClass.push("remove-who-are-truyoo-text-margin-keyframe");
-    }
-
     let companyName = "truYoo";
 
     return (
@@ -45,35 +17,33 @@ class RecruitingYourDownline extends React.Component {
         <Navtwo />
         <div className="text-box">
           <h1 className="responsive-h1">Recruiting Your Downline</h1>
-          <p>PARAGRAPH</p>
-          <h2
-            className={textClass.join(" ")}
-            id="text-2"
-            onScroll={this.handleScroll}
-          >
-            SCROLLABLE H2
-          </h2>
-          <p>PARAGRAPH</p>
-          <h2
-            className={textClass.join(" ")}
-            id="text-2"
-            onScroll={this.handleScroll}
-          >
-            SCROLLABLE H2
-          </h2>
-          <p>PARAGRAPH</p>
-          <h2
-            className={textClass.join(" ")}
-            id="text-2"
-            onScroll={this.handleScroll}
-          >
-            SCROLLABLE H2
-          </h2>
-          <Link to="/RetailerLogin">
-            <Button>Click Me</Button>
-          </Link>
           <br></br>
-          <br></br>
+          <p
+            style={{
+              textAlign: "justify",
+              marginLeft: "20px",
+              marginRight: "20px"
+            }}
+          >
+            {companyName} distributors level up depending on volume points and
+            your downline. Volume points are awarded based on quantities of
+            stock purchased by the distributor, and your downline is the team of
+            active people you have working under you. The more product you sell,
+            the more points awarded and the higher you go. And the more product
+            your team sells, the more points you are awarded, and the sky is the
+            limit.
+          </p>
+          <p
+            style={{
+              textAlign: "justify",
+              marginLeft: "20px",
+              marginRight: "20px"
+            }}
+          >
+            As a member of the {companyName} family, you work your way from
+            Distributor, through the pyramid of levels, and towards the
+            Founder's Inner Circle.
+          </p>
 
           <Container>
             <Row>
@@ -135,6 +105,18 @@ class RecruitingYourDownline extends React.Component {
               </Col>
             </Row>
           </Container>
+
+          <br></br>
+          <p>
+            To find out more about our unique pyramid business structure and how
+            it can financially benefit you, please{" "}
+            <Link to="/RetailerLogin">
+              <Button>Get In Touch</Button>
+            </Link>
+          </p>
+
+          <br></br>
+          <br></br>
         </div>
         <Footer />
       </div>
