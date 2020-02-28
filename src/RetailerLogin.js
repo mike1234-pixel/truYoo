@@ -43,7 +43,7 @@ class RetailerLogin extends React.Component {
 
   handleChange(event) {
     const { name, value, type, checked } = event.target;
-    if (type == "checkbox") {
+    if (type === "checkbox") {
       this.setState({
         [name]: checked
       });
@@ -82,11 +82,11 @@ class RetailerLogin extends React.Component {
 
   validateName() {
     let name = this.state.nameValue;
-    if (name == "") {
+    if (name === "") {
       this.setState({
         nameError: "Please enter a valid name."
       });
-    } else if (name != "") {
+    } else if (name !== "") {
       this.setState({
         nameError: ""
       });
@@ -98,11 +98,11 @@ class RetailerLogin extends React.Component {
 
   validateEmail() {
     let email = this.state.emailValue;
-    if (!email.includes("@") || email == "") {
+    if (!email.includes("@") || email === "") {
       this.setState({
         emailError: "Please enter a valid email."
       });
-    } else if (email != "" && email.includes("@")) {
+    } else if (email !== "" && email.includes("@")) {
       this.setState({
         emailError: ""
       });
@@ -116,14 +116,14 @@ class RetailerLogin extends React.Component {
     let phoneNumber = this.state.phoneValue;
     let regex = /^([0-9]{11})$/;
     if (
-      phoneNumber == null ||
-      phoneNumber == "" ||
-      regex.test(phoneNumber) == false
+      phoneNumber === null ||
+      phoneNumber === "" ||
+      regex.test(phoneNumber) === false
     ) {
       this.setState({
         phoneError: "Please enter a valid phone number."
       });
-    } else if (regex.test(phoneNumber) == true) {
+    } else if (regex.test(phoneNumber) === true) {
       this.setState({
         phoneError: ""
       });
@@ -136,12 +136,12 @@ class RetailerLogin extends React.Component {
   validatePasswordOne() {
     let passwordOne = this.state.passwordValueOne;
     let regex = /(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[0-9])/; /* CHANGE THIS REGEX TO MAKE IT TEST WHAT YOU WANT TO TEST FOR*/
-    if (regex.test(passwordOne) == false) {
+    if (regex.test(passwordOne) === false) {
       this.setState({
         passwordOneError:
           "Password must be minimum 8 characters and include one uppercase letter, one number and one special character."
       });
-    } else if (regex.test(passwordOne) == true) {
+    } else if (regex.test(passwordOne) === true) {
       this.setState({
         passwordOneError: ""
       });
@@ -159,13 +159,13 @@ class RetailerLogin extends React.Component {
       this.setState({
         passwordTwoError: "Your passwords don't match."
       });
-    } else if (passwordTwo == null || passwordTwo == "") {
+    } else if (passwordTwo === null || passwordTwo === "") {
       this.setState({
         passwordTwoError: "Field is empty."
       });
     } else if (
-      passwordTwo != null ||
-      (passwordTwo != "" && passwordTwo == passwordOne)
+      passwordTwo !== null ||
+      (passwordTwo !== "" && passwordTwo === passwordOne)
     ) {
       this.setState({
         passwordTwoError: ""
@@ -180,11 +180,11 @@ class RetailerLogin extends React.Component {
 
   validateCity() {
     let city = this.state.cityValue;
-    if (city == "") {
+    if (city === "") {
       this.setState({
         cityError: "Please enter a city."
       });
-    } else if (city != "") {
+    } else if (city !== "") {
       this.setState({
         cityError: ""
       });
@@ -196,11 +196,11 @@ class RetailerLogin extends React.Component {
 
   validateState() {
     let state = this.state.stateValue;
-    if (state == "" || state == "SL") {
+    if (state === "" || state === "SL") {
       this.setState({
         stateError: "Please select a state."
       });
-    } else if (state != "SL") {
+    } else if (state !== "SL") {
       this.setState({
         stateError: ""
       });
@@ -213,11 +213,11 @@ class RetailerLogin extends React.Component {
   validateZip() {
     let zip = this.state.zipValue;
     let regex = /^([0-9]{5}|[0-9]{5}-[0-9]{4})$/;
-    if (zip == null || zip == "" || regex.test(zip) == false) {
+    if (zip === null || zip === "" || regex.test(zip) === false) {
       this.setState({
         zipError: "Please enter a valid zip code."
       });
-    } else if (regex.test(zip) == true) {
+    } else if (regex.test(zip) === true) {
       this.setState({
         zipError: ""
       });
@@ -229,7 +229,7 @@ class RetailerLogin extends React.Component {
 
   validateTextAreaOne() {
     let textAreaOne = this.state.textAreaOneValue;
-    if (textAreaOne == "" || textAreaOne.length < 30) {
+    if (textAreaOne === "" || textAreaOne.length < 30) {
       this.setState({
         textAreaOneError: "Field must contain over 30 characters."
       });
@@ -244,7 +244,7 @@ class RetailerLogin extends React.Component {
 
   validateTextAreaTwo() {
     let textAreaTwo = this.state.textAreaTwoValue;
-    if (textAreaTwo == "" || textAreaTwo.length < 30) {
+    if (textAreaTwo === "" || textAreaTwo.length < 30) {
       this.setState({
         textAreaTwoError: "Field must contain over 30 characters."
       });
@@ -259,7 +259,7 @@ class RetailerLogin extends React.Component {
 
   validateTextAreaThree() {
     let textAreaThree = this.state.textAreaThreeValue;
-    if (textAreaThree == "" || textAreaThree.length < 30) {
+    if (textAreaThree === "" || textAreaThree.length < 30) {
       this.setState({
         textAreaThreeError: "Field must contain over 30 characters."
       });
@@ -274,7 +274,7 @@ class RetailerLogin extends React.Component {
 
   validateTextAreaFour() {
     let textAreaFour = this.state.textAreaFourValue;
-    if (textAreaFour == "" || textAreaFour.length < 30) {
+    if (textAreaFour === "" || textAreaFour.length < 30) {
       this.setState({
         textAreaFourError: "Field must contain over 30 characters."
       });
@@ -291,11 +291,11 @@ class RetailerLogin extends React.Component {
 
   validateCheckBox() {
     let checked = this.state.checkBoxChecked;
-    if (checked == false) {
+    if (checked === false) {
       this.setState({
         checkBoxError: "Please agree to the terms and conditions."
       });
-    } else if (checked == true) {
+    } else if (checked === true) {
       this.setState({
         checkBoxError: ""
       });
@@ -307,19 +307,19 @@ class RetailerLogin extends React.Component {
 
   submitForm() {
     if (
-      this.state.nameError == "" &&
-      this.state.emailError == "" &&
-      this.state.phoneError == "" &&
-      this.state.passwordOneError == "" &&
-      this.state.passwordTwoError == "" &&
-      this.state.cityError == "" &&
-      this.state.stateError == "" &&
-      this.state.zipError == "" &&
-      this.state.textAreaOneError == "" &&
-      this.state.textAreaTwoError == "" &&
-      this.state.textAreaThreeError == "" &&
-      this.state.textAreaFourError == "" &&
-      this.state.checkBoxError == ""
+      this.state.nameError === "" &&
+      this.state.emailError === "" &&
+      this.state.phoneError === "" &&
+      this.state.passwordOneError === "" &&
+      this.state.passwordTwoError === "" &&
+      this.state.cityError === "" &&
+      this.state.stateError === "" &&
+      this.state.zipError === "" &&
+      this.state.textAreaOneError === "" &&
+      this.state.textAreaTwoError === "" &&
+      this.state.textAreaThreeError === "" &&
+      this.state.textAreaFourError === "" &&
+      this.state.checkBoxError === ""
     ) {
       window.location.reload(true);
     }

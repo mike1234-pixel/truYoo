@@ -13,7 +13,11 @@ function ProductCard(props) {
 
   return (
     <div id="product-card">
-      <img src={imageArr[props.id]} />
+      <img
+        src={imageArr[props.id]}
+        alt="truYoo products"
+        className="product-card-img"
+      />
       <h2>{props.name}</h2>
       <p>{props.description}</p>
       <Link to="/HowToShopTruYoo">

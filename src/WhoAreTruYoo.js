@@ -22,9 +22,6 @@ class WhoAreTruYoo extends React.Component {
   }
 
   handleScroll(event) {
-    let scrollTop = event.srcElement.body.scrollTop,
-      itemTranslate = Math.min(0, scrollTop / 3 - 60);
-
     this.setState(state => ({
       removeMargin: true
     }));
@@ -101,6 +98,7 @@ class WhoAreTruYoo extends React.Component {
           <img
             id="image-who-are-tru-you-1"
             src={require("./Images-and-videos/pic11.jpeg")}
+            alt="woman smiling and holding a balloon"
           ></img>
         </div>
         <Footer />

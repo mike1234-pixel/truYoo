@@ -11,10 +11,7 @@ class HomeCarousel extends React.Component {
             src={require("./Images-and-videos/pic6.png")}
             alt="First slide"
           />
-          <Carousel.Caption>
-            <h3></h3>
-            <p></p>
-          </Carousel.Caption>
+          <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
@@ -23,10 +20,7 @@ class HomeCarousel extends React.Component {
             alt="Third slide"
           />
 
-          <Carousel.Caption>
-            <h3></h3>
-            <p></p>
-          </Carousel.Caption>
+          <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
@@ -35,10 +29,7 @@ class HomeCarousel extends React.Component {
             alt="Third slide"
           />
 
-          <Carousel.Caption>
-            <h3></h3>
-            <p></p>
-          </Carousel.Caption>
+          <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
       </Carousel>
     );

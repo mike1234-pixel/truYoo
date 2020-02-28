@@ -26,8 +26,6 @@ class WhyWeAreNotAPyramid extends React.Component {
       imgClass.push("rotate-me");
     }
 
-    let companyName = "truYoo";
-
     return (
       <div className="text-body">
         <Navtwo />
@@ -59,6 +57,7 @@ class WhyWeAreNotAPyramid extends React.Component {
           <img
             src={require("./Images-and-videos/pic18.png")}
             className={imgClass.join(" ")}
+            alt="pyramid scheme structure"
           ></img>
           <Button onClick={this.handleClick}>Show Me The Dimaryp!</Button>
         </div>

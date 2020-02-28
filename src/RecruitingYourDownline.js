@@ -5,10 +5,6 @@ import { Link } from "react-router-dom";
 import { Button, Row, Col, Container } from "react-bootstrap";
 
 class RecruitingYourDownline extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
     let companyName = "truYoo";
 
@@ -51,6 +47,7 @@ class RecruitingYourDownline extends React.Component {
                 <img
                   className="levels-img"
                   src={require("./Images-and-videos/pic25.png")}
+                  alt="rose icon"
                 ></img>
                 <p>Distributor</p>
               </Col>
@@ -58,6 +55,7 @@ class RecruitingYourDownline extends React.Component {
                 <img
                   className="levels-img"
                   src={require("./Images-and-videos/pic26.png")}
+                  alt="tree icon"
                 ></img>
                 <p>Success Builder</p>
               </Col>
@@ -65,6 +63,7 @@ class RecruitingYourDownline extends React.Component {
                 <img
                   className="levels-img"
                   src={require("./Images-and-videos/pic27.png")}
+                  alt="black diamond icon"
                 ></img>
                 <p>Black Diamond Success Builder</p>
               </Col>
@@ -72,6 +71,7 @@ class RecruitingYourDownline extends React.Component {
                 <img
                   className="levels-img"
                   src={require("./Images-and-videos/pic28.png")}
+                  alt="diamond ring icon"
                 ></img>
                 <p>Platinum Diamond Distributor</p>
               </Col>
@@ -79,6 +79,7 @@ class RecruitingYourDownline extends React.Component {
                 <img
                   className="levels-img"
                   src={require("./Images-and-videos/pic29.png")}
+                  alt="globe icon"
                 ></img>
                 <p>World Team</p>
               </Col>
@@ -86,6 +87,7 @@ class RecruitingYourDownline extends React.Component {
                 <img
                   className="levels-img"
                   src={require("./Images-and-videos/pic30.png")}
+                  alt="money icon"
                 ></img>
                 <p>Millionaire Team</p>
               </Col>
@@ -93,6 +95,7 @@ class RecruitingYourDownline extends React.Component {
                 <img
                   className="levels-img"
                   src={require("./Images-and-videos/pic31.png")}
+                  alt="office and notebook icon"
                 ></img>
                 <p>Executive Team</p>
               </Col>
@@ -100,6 +103,7 @@ class RecruitingYourDownline extends React.Component {
                 <img
                   className="levels-img"
                   src={require("./Images-and-videos/pic32.png")}
+                  alt="candle icon"
                 ></img>
                 <p>Founder's Inner Circle</p>
               </Col>

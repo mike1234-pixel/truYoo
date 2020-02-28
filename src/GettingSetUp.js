@@ -5,10 +5,6 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 class GettingSetUp extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
     let companyName = "truYoo";
 
@@ -25,6 +21,7 @@ class GettingSetUp extends React.Component {
           <img
             className="being-your-own-boss-pics"
             src={require("./Images-and-videos/pic44.jpeg")}
+            alt="sign reading 'time for change'"
           ></img>
           <br></br>
           <br></br>
@@ -51,6 +48,7 @@ class GettingSetUp extends React.Component {
           <img
             className="being-your-own-boss-pics"
             src={require("./Images-and-videos/pic43.jpeg")}
+            alt="woman working at computer'"
           ></img>
           <br></br>
           <br></br>
@@ -74,6 +72,7 @@ class GettingSetUp extends React.Component {
           <img
             className="being-your-own-boss-pics"
             src={require("./Images-and-videos/pic45.jpeg")}
+            alt="online store"
           ></img>
           <br></br>
           <br></br>

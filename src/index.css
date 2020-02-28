@@ -430,6 +430,33 @@ p.videoText {
   height: 100px;
   margin-bottom: 5vh;
   filter: drop-shadow(5px 5px 5px #1c0a57);
+  animation-name: pic-fade-in;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes pic-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.product-card-img {
+  animation-name: pic-fade-in;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes pic-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .being-your-own-boss-pics {
@@ -437,6 +464,18 @@ p.videoText {
   filter: drop-shadow(5px 5px 5px #cc66bd);
   width: 200px;
   height: 200px;
+  animation-name: pic-fade-in;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes pic-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 1500px) {
