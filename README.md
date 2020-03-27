@@ -1,3 +1,5 @@
+I MADE THIS PROJECT USING CLASSES BEFORE DISCOVERING HOOKS DO A MUCH BETTER JOB OF MANAGING STATE
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
